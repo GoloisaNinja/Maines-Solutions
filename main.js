@@ -1,10 +1,11 @@
-document.querySelector('#hiddenForm').style.visibility = 'hidden'
+const mainSurveyButton = document.querySelector('#iniSurvey')
+const mainHidden = document.querySelector('#hiddenForm')
+mainHidden.style.visibility = 'hidden'
 
-function displayHidden() {
-  const x = document.querySelector('#hiddenForm');
-    if (x.style.visibility === 'visible') {
-        x.style.visibility = 'hidden'
-    } else {
-        x.style.visibility = 'visible'
-}
-}
+mainSurveyButton.addEventListener('click', function(e){
+  if (mainHidden.style.visibility === 'hidden') {
+      mainHidden.style.visibility = 'visible'
+  } else {
+      mainHidden.style.visibility = 'hidden'
+  }
+})
