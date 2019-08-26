@@ -10,12 +10,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
 }
 
-  #mainCards{
-      text-align: center;
-  }
   #cardButtons{
       font-weight: bold;
   }
@@ -41,4 +37,38 @@
   }
 #inputFN4, #inputYrsEmp, #inputBusType4, #inputIdeaImpact, #inputFreud, #inputImpAttrib{
   font-weight: bold;
+}
+#accOne, #accTwo, #accThree{
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: white;
+  background-color: #141414;
+}
+#accOne:hover, #accTwo:hover, #accThree:hover{
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: white;
+  background-color: #fc2629;
+}
+#collapseOne, #collapseTwo, #collapseThree{
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: white;
+  background-color: #21242e;
+}
+.card{
+  background-color: #141414;
+}
+#cousinBut{
+  font-family: 'Open Sans Condensed', sans-serif;
+  text-align: center;
+  font-weight: bold;
+}
+#turtleBut:hover, #amazeBalls:hover, #iniSurvey:hover, #biiSubmit:hover{
+  color: #fc2629!important;
+  background-color: #d1cdcd;
+  font-weight: bold;
+}
+#grenadeFlavoredWater{
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: .25em;
+  color: white;
+  text-align: center;
 }
