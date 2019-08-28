@@ -40,19 +40,19 @@
 #inputFN4, #inputYrsEmp, #inputBusType4, #inputIdeaImpact, #inputFreud, #inputImpAttrib{
   font-weight: bold;
 }
-#accOne, #accTwo, #accThree{
+#accOne, #accTwo, #accThree, #accFour{
   font-family: 'Open Sans Condensed', sans-serif;
   color: white;
   background-color: #141414;
   font-weight: bold;
   font-size: .65em;
 }
-#accOne:hover, #accTwo:hover, #accThree:hover{
+#accOne:hover, #accTwo:hover, #accThree:hover, #accFour:hover{
   font-family: 'Open Sans Condensed', sans-serif;
   color: white;
   background-color: #fc2629;
 }
-#collapseOne, #collapseTwo, #collapseThree{
+#collapseOne, #collapseTwo, #collapseThree, #collapseFour{
   font-family: 'Open Sans Condensed', sans-serif;
   color: white;
   background-color: #21242e;
