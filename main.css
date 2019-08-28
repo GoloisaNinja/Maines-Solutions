@@ -96,3 +96,8 @@
 #bbiButDiv{
   text-align: center;
 }
+.imgcontainer{
+  width: 100%;
+  display: block;
+  text-align: center;
+}
