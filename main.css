@@ -43,6 +43,7 @@
   color: white;
   background-color: #141414;
   font-weight: bold;
+  font-size: .65em;
 }
 #accOne:hover, #accTwo:hover, #accThree:hover{
   font-family: 'Open Sans Condensed', sans-serif;
@@ -56,17 +57,19 @@
 }
 .card{
   background-color: #141414;
-  font-weight: bold;
+
+
 }
 .accordion{
-  font-weight: bold;
+
+  font-size: 1.15em;
 }
 #cousinBut{
   font-family: 'Open Sans Condensed', sans-serif;
   text-align: center;
   font-weight: bold;
 }
-#turtleBut:hover, #amazeBalls:hover, #iniSurvey:hover, #bbiSubmit:hover, #bbiResults:hover{
+#turtleBut:hover, #amazeBalls:hover, #iniSurvey:hover, #bbiSubmit:hover, #bbiResult:hover{
   color: #FC2629!important;
   background-color: #141414;
   font-weight: bold;
@@ -76,4 +79,14 @@
   font-size: .25em;
   color: white;
   text-align: center;
+}
+.jumboText{
+  font-size: 1.15em;
+}
+#mashupCont{
+  text-align: center:
+}
+#conclusionsMashup{
+  text-align: left;
+  color: white;
 }
