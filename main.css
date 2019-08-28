@@ -42,6 +42,7 @@
   font-family: 'Open Sans Condensed', sans-serif;
   color: white;
   background-color: #141414;
+  font-weight: bold;
 }
 #accOne:hover, #accTwo:hover, #accThree:hover{
   font-family: 'Open Sans Condensed', sans-serif;
@@ -55,6 +56,10 @@
 }
 .card{
   background-color: #141414;
+  font-weight: bold;
+}
+.accordion{
+  font-weight: bold;
 }
 #cousinBut{
   font-family: 'Open Sans Condensed', sans-serif;
