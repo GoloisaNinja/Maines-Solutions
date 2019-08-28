@@ -87,6 +87,9 @@
   text-align: center:
 }
 #conclusionsMashup{
-  text-align: left;
   color: white;
+  text-align: left;
+}
+#bbiButDiv{
+  text-align: center;
 }
