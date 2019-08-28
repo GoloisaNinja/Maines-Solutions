@@ -57,11 +57,8 @@
 }
 .card{
   background-color: #141414;
-
-
 }
 .accordion{
-
   font-size: 1.15em;
 }
 #cousinBut{
@@ -83,12 +80,15 @@
 .jumboText{
   font-size: 1.15em;
 }
+.jumboText2{
+  font-size: 1.01em;
+}
 #mashupCont{
   text-align: center:
 }
 #conclusionsMashup{
   color: white;
-  text-align: left;
+  text-align: center;
 }
 #bbiButDiv{
   text-align: center;
