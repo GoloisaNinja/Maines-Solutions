@@ -111,7 +111,11 @@
 }
 .modal-header{
   background-color: #141414;
+  border-bottom: none;
 }
 .modal-body{
   background-color: #21242e;
+}
+.modal-footer{
+  border-top: none;
 }
