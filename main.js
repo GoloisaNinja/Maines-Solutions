@@ -70,7 +70,26 @@ const randBusinessGoal = [
   'OMG, the WILDCARD BITCHES'
 ]
 
+const badBusinessIdeaArray = [{
+  idea: 'Hibachi and Breakfast. Wake up to the aroma of coffee, the sound of sizzling bacon, and the peaceful clanging of a blade wielding food ninja.',
+  tags: 'food, restaurant, hibachi, ninja, ninjas, bed, breakfast, knives, clanging',
+  level: 3,
+  goal: 'innovation, making friends, company profitability, personal financial gain, OMG'
+},
+{
+  idea: 'Inside out ice cream bars. Chocolate in the middle. Napkins not included. Sell during heatwaves for highest napkin profits.',
+  tags: 'ice cream, chocolate, food, napkins, messy, desserts, treats, sugar',
+  level: 2,
+  goal: 'innovation, company profitability, sucking up to the ceo, personal financial gain, omg'
+},
+{
+  idea: 'Boxed Wine Waterbeds. Waterbeds made out of bagged wine.  Can\'t sleep...have a drink.  Proprietary refill valves to ensure you own the refill survice.  Mark up boxed wine by 50%.',
+  tags: 'liquor, wine, beverage, beverages, sleep, bed, beds, furniture, alcoholism, alcohol, lush, lushes, enabling',
+  level: 3,
+  goal: 'company profitability, personal financial gain, innovative, omg',
+}]
 
+console.log(badBusinessIdeaArray[2].idea);
 
 const pageCheck = function(){
   if (pageBody.className === "surveyPage") {
@@ -97,16 +116,24 @@ const pageCheck = function(){
       }
       surveyName = 'First Name: ' + e.target.elements.fName.value
       busType = 'Current Business: ' + e.target.elements.inputBusType4.value
+      busTypeClean = e.target.elements.inputBusType4.value
       yrsTenure = 'Years at business: ' + e.target.elements.inputYrsEmp.value
       ideaImpact = 'Desired Impact: ' + e.target.elements.inputIdeaImpact.value
+      ideaImpactClean = e.target.elements.inputIdeaImpact.value
       freudGo = 'Word Association: ' + e.target.elements.inputFreud.value
+      freudGoClean = e.target.elements.inputFreud.value
       busAttrib = 'Business Goal: ' + e.target.elements.inputImpAttrib.value
+      busAttribClean = e.target.elements.inputImpAttrib.value
       localStorage.setItem('First Name', surveyName)
       localStorage.setItem('Business Type', busType)
+      localStorage.setItem('Business Type Clean', busTypeClean)
       localStorage.setItem('Tenure', yrsTenure)
       localStorage.setItem('Idea Impact', ideaImpact)
+      localStorage.setItem('Idea Impact Clean', ideaImpactClean)
       localStorage.setItem('Freud', freudGo)
+      localStorage.setItem('Freud Clean', freudGoClean)
       localStorage.setItem('Bus Attribute', busAttrib)
+      localStorage.setItem('Bus Attribute Clean', busAttribClean)
 
 
     })
@@ -146,16 +173,49 @@ const pageCheck = function(){
       const freudLength = freudJudgementArray.length - 1
       const busGoalLength = businessGoalJudgement.length - 1
 
+      const badBusLength = badBusinessIdeaArray.length - 1
+
+
       const pName = hateYourNameArray[Math.floor(Math.random() * nameArrayLength)]
       const pJob = hateYourJobArray[Math.floor(Math.random() * jobArrayLength)]
       const pYrs = laughableYearsArray[Math.floor(Math.random() * laughYrsLength)]
       const pFreud = freudJudgementArray[Math.floor(Math.random() * freudLength)]
       const pGoal = businessGoalJudgement[Math.floor(Math.random() * busGoalLength)]
 
+      const pBad = badBusinessIdeaArray[Math.floor(Math.random() * badBusLength)]
+      let pBadTag = ''
+      let arrayDecision = []
+      const cleanTag = localStorage.getItem('Freud Clean')
 
-      const mashUp = `So, your name is ${spName}.  That is ${pName} And let\'s see here.  As your current business you selected ${spBus} ${pJob} The years at business question is unique. It provides me both a time constraint, but more importantly a "general feeling" you have about your business.  Your general feeling comment was ${secspYrs}. This comment has allowed me to breach your fleshy goo spaces and extract business data.  You indicated a time constraint of ${spYrs}. ${pYrs} The first word that came to your head was ${spFreud}. I mean really? ${pFreud} Lastly, the business goal you selected was ${spAtt}. I am going to be brutally, robotically honest here. ${pGoal} But all that being said, let us take a look at the customized Bad Business Idea that my robot algorithm, acquired for the low price of 3 human souls, has come up with for you. *begin happy computing noises* `
+      for (var i = 0; i < badBusinessIdeaArray.length; i++) {
+        let modTags = badBusinessIdeaArray[i].tags.split(",")
+        console.log(modTags);
+        for (var z = 0; z < modTags.length; z++) {
+          if (modTags[z].includes(cleanTag)) {
+            arrayDecision.push(badBusinessIdeaArray[i].idea)
+          }
+        }
+      }
+
+      console.log(cleanTag);
+      console.log(pBad);
+      console.log(arrayDecision);
+
+      const arrayDecLength = arrayDecision.length
+      const arrayDecLength2 = arrayDecision.length - 1
+
+      if (arrayDecLength === 1) {
+        pBadTag = arrayDecision[0]
+      } else if (arrayDecLength > 1) {
+        pBadTag = arrayDecision[Math.floor(Math.random() * arrayDecLength2)]
+      } else {
+        pBadTag = pBad.idea
+      }
+
+      const mashUp = `So, your name is ${spName}.  That is ${pName} And let\'s see here.  As your current business you selected ${spBus} ${pJob} The years at business question is unique. It provides me both a time constraint, but more importantly a "general feeling" you have about your business.  Your general feeling comment was ${secspYrs}. This comment has allowed me to breach your fleshy goo spaces and extract business data.  You indicated a time constraint of ${spYrs}. ${pYrs} The first word that came to your head was ${spFreud}. I mean really? ${pFreud} Lastly, the business goal you selected was ${spAtt}. I am going to brutally, robotically honest here. ${pGoal} But all that being said, let us take a look at the customized Bad Business Idea that my robot algorithm, acquired for the low price of 3 human souls, has come up with for you. *begin happy computing noises* `
 
       document.querySelector('#conclusionsMashup').textContent = mashUp
+      document.querySelector('#badBusinessIdea').textContent = pBadTag
   }
 }
 
@@ -200,3 +260,4 @@ pageCheck()
 //       mainHidden.style.visibility = 'hidden'
 //   }
 // })
+
