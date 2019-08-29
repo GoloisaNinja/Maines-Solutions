@@ -185,7 +185,7 @@ const pageCheck = function(){
       const pBad = badBusinessIdeaArray[Math.floor(Math.random() * badBusLength)]
       let pBadTag = ''
       let arrayDecision = []
-      const cleanTag = localStorage.getItem('Freud Clean')
+      const cleanTag = localStorage.getItem('Freud Clean').toLowerCase().trim()
 
       for (var i = 0; i < badBusinessIdeaArray.length; i++) {
         let modTags = badBusinessIdeaArray[i].tags.split(",")
