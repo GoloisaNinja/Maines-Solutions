@@ -22,6 +22,7 @@
       <a class="nav-item nav-link" href="index.html">Home</a>
       <a class="nav-item nav-link" href="learnMore.html">Get Started <span class="sr-only">(current)</span> </a>
       <a class="nav-item nav-link active" href="#">Robot Results <span class="sr-only">(current)</span> </a>
+      <a class="nav-item nav-link" href="contact.php">Contact Us!</a>
       <a class="nav-item nav-link" href="https://www.newbsanity.com">Newbsanity</a>
       <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Pricing</a>
     </div>
@@ -36,8 +37,8 @@
         <h1 class="display-4">The Robots have beeped and booped!</h1>
         <p class="lead">Your customized Bad Business Idea is here! Just as a refresher, let's take a look at all the terrible/wonderful things you submitted!</p>
         <hr class="my-4">
-        <p class="jumboText">Here is how you responsed to our patented questionnaire: </p>
-        <ul class="jumboText">
+        <p>Here is how you responsed to our patented questionnaire: </p>
+        <ul>
           <li id="result1"></li>
           <li id="result2"></li>
           <li id="result3"></li>
@@ -45,15 +46,56 @@
           <li id="result5"></li>
           <li id="result6"></li>
         </ul>
-        </div>
 
-      <div class="container" id="mashupCont">
-        <p class="jumboText" id="conclusionsMashup"></p>
+
+
 
       </div>
-    <div class="container" id="bbiButDiv">
-      <button type="button" class="btn btn-danger btn-lg" name="button" id="bbiResult">Your Bad Business Idea</button>
+
+      <div class="container">
+        <p id="conclusionsMashup"></p>
+        <div class="container" id="mash">
+        <button type="button" class="btn btn-danger btn-lg" name="button" id="bbiResult" data-toggle="modal" data-target="#houseOfBad">Your Bad Business Idea</button>
+      </div>
+      </div>
+    <br>
+    <p></p>
+
+        <!-- Central Modal Medium Success -->
+<div class="modal fade" id="houseOfBad" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-success" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead">Your Bad Business Idea!</p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">
+          <!-- <i class="fas fa-check fa-4x mb-3 animated rotateIn"></i> -->
+          <p id="badBusinessIdea"></p>
+        </div>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center" id="badModal">
+        <button type="button" class="btn btn-danger btn-md" data-dismiss="modal" id="badThank">Get Paid</button>
+      </div>
     </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!-- Central Modal Medium Success-->
+
+
+
 
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -61,3 +103,4 @@
         <script src="main.js"></script>
           </body>
         </html>
+

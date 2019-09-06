@@ -70,11 +70,12 @@
   text-align: center;
   font-weight: bold;
 }
-#turtleBut:hover, #amazeBalls:hover, #iniSurvey:hover, #bbiSubmit:hover, #bbiResult:hover{
+#turtleBut:hover, #amazeBalls:hover, #iniSurvey:hover, #bbiSubmit:hover, #bbiResult:hover, #drawingSchool:hover, #hibachiLink:hover, #badThank:hover{
   color: #FC2629!important;
   background-color: #141414;
   font-weight: bold;
 }
+
 #grenadeFlavoredWater{
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: .25em;
@@ -108,4 +109,21 @@
 }
 .card-body{
   text-align: left;
+}
+.modal-header{
+  background-color: #141414;
+  border-bottom: none;
+}
+.modal-body, #badModal{
+  background-color: #21242e;
+  border-bottom: none;
+}
+#hibachiText{
+  color: white;
+}
+.modal-footer{
+  border-top: none;
+}
+#mash{
+  text-align: center;
 }
