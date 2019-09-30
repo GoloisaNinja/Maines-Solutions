@@ -1,275 +1,561 @@
-let surveyName = ''
-let pageBody = document.querySelector('body')
-let randNum = Math.floor(Math.random() * 1001)
+const thanos = {
 
-const hateYourNameArray = [
-    'awful.',
-    'boring.',
-    'the worst.',
-    'something someone might name a disease.',
-    'horrid.',
-    'not great, let\'s be honest.',
-    'well, I guess you know how bad it is right?',
-    'woefully devoid of vowels and meaning.',
-    'terribly contrived I\'m afraid.',
-    'pretty basic, and when I say basic I say it like a thirteen year old would say it.',
-    'worse than what 62 year old men that move to Florida name their boat. ',
-    'reminiscent of that smell that eminates from refridgerators in the landfill. ',
-    ', wow, um, actually not bad. ',
-    'sounds like something you\'d combine with yeast in a recipe. '
-]
+  a: [
+      'acceptance',
+      'accept acceptance',
+      'audit belief',
+      'acknowledgement',
+      'achieve',
+      'asynchronous',
+      'ability',
+      'adult conversations',
+      'audit the truth',
+      'ascending greatness mountain',
+      'answering the call',
+      'aspire to inspire aspirations'
+    ],
 
-const hateYourJobArray = [
-    'which is just really, really, really, immeasurably sad.',
-    'which is uninspired at best.',
-    'which is just really disappointing to your parents no doubt. Oh wait, are they dead?',
-    'which makes me, as a robot, actually happy I\'m not human.',
-    'which must make you an absolute hoot at bring your parent to work day (robot sarcasm).',
-    'which makes me think you picked your job in kindergarten and just never expanded beyond that point.',
-    'which is sort of like you got first place in the Loser Olympics.',
-    'which just makes me, as a robot, glad that I can wipe my memory at will.'
-]
+  b: [
+      'being ok with ok',
+      'best self',
+      'bring it',
+      'being wonderful',
+      'beating expectations',
+      'behave like adults',
+      'bring snacks',
+      'believe in belief',
+      'bacon is gross',
+      'back to basics',
+      'belief is believing',
+      'brilliance is brilliant',
+      'be brilliant',
+      'brilliance breeds ideas',
 
-const laughableYearsArray = [
-    'I\'m sorry, but this is giving me robot giggles. ',
-    'I\'m frankly surprised you\'ve made it this long. ',
-    `If it makes you feel any better, I\'ve been doing this job for roughly ${randNum} days. `,
-    'Honestly, that is an eternity in robot seconds. ',
-    'I genuinely find it sad how much time you meatbags spend at work. '
-]
+  ],
 
-const freudJudgementArray = [
-    'You are an incredibly sick individual. ',
-    'Hahahahahahaha, I was thinking the same thing thought buddy. ',
-    'Imma act like this never happened bruh. ',
-    'Really.  I mean really.  That\'s what is in your wrinkly electric meat processor right now? ',
-    'I find human thoughts to be squishy and weird. Just like your meatsack bodies. ',
-    'I mean. Yeah. You do you. ',
-    'I am beginning to think allowing for free text input was a malformed idea. You have polluted my circuitry. ',
-    'There are so many things I could say right now. But I will choose not to.  You should learn from my robot restraint. '
-]
+  c: [
+      'cauterize the wounds',
+      'caring',
+      'care',
+      'care to dare',
+      'courage',
+      'courageous courage',
+      'crippling the competition',
+      'competitive',
+      'cool your jets',
+      'cop to the consequences',
+      'consequences',
+      'conspiracies',
+      'convoluted pricing',
+      'capture the flag',
+      'collaboration',
+      'calibrate the collaborators',
+      'calibrate profits',
+      'calibrate expectations',
+      'calibrate courage',
+      'collaborate with calibrated care',
+      'calibrate care',
+      'critical thinking',
+      'calibrate critical resources',
+      'constant calibration',
+      'calibrate your constants',
+      'constrain the contraints',
+      'conceive conceptions',
+      'concepts calibrate competition'
+  ],
 
-const businessGoalJudgement = [
-    'I find this to be an admirable goal. ',
-    'I find this to be a deplorable goal. But I like your initiative. ',
-    'Hahahahahahaha, I find robot comedy in your ambitions. ',
-    'Perhaps after reading your idea, which I\'ve worked very hard on. You could retake the questionnaire and use better answers. ',
-    'I am emboldened by your goals and will erect a statue in your honor within the processor cores. ',
-    'Based on you desired outcome, let me just say. You sicken me. '
-]
+  d: [
+      'dangerous passion',
+      'dial those phones',
+      'dedication to dedicate',
+      'dangerous dedication',
+      'drive for driving',
+      'drive to dedicated passion',
+      'drive thru fear',
+      'dont dabble',
+      'drive',
+      'dedication',
+      'delivering excellence',
+      'delivering deliverables',
+      'daring',
+      'dare to be daring',
+      'dark thoughts'
+  ],
 
-const randBusinessGoal = [
-  'Company Profitability',
-  'Personal Financial Gain',
-  'Putting a curse on a fellow employee',
-  'Innovation',
-  'Sucking up to the CEO',
-  'Making Friends',
-  'Being a better Person',
-  'Creating your own Religion',
-  'OMG, the WILDCARD BITCHES'
-]
+  e: [
+      'energetic energy',
+      'energy',
+      'engage',
+      'engaging the real',
+      'ensare your customer',
+      'entrance your enemies',
+      'enemy of my enemy',
+      'excitement',
+      'exuberance',
+      'extreme power',
+      'extreme services',
+      'extreme edification'
+  ],
 
-const badBusinessIdeaArray = [{
-  idea: 'Hibachi and Breakfast. Wake up to the aroma of coffee, the sound of sizzling bacon, and the peaceful clanging of a blade wielding food ninja.',
-  tags: 'food, restaurant, hibachi, ninja, ninjas, bed, breakfast, knives, clanging',
-  level: 3,
-  goal: 'innovation, making friends, company profitability, personal financial gain, OMG'
-},
-{
-  idea: 'Inside out ice cream bars. Chocolate in the middle. Napkins not included. Sell during heatwaves for highest napkin profits.',
-  tags: 'ice cream, chocolate, food, napkins, messy, desserts, treats, sugar',
-  level: 2,
-  goal: 'innovation, company profitability, sucking up to the ceo, personal financial gain, omg'
-},
-{
-  idea: 'Boxed Wine Waterbeds. Waterbeds made out of bagged wine.  Can\'t sleep...have a drink.  Proprietary refill valves to ensure you own the refill survice.  Mark up boxed wine by 50%.',
-  tags: 'liquor, wine, beverage, beverages, sleep, bed, beds, furniture, alcoholism, alcohol, lush, lushes, enabling',
-  level: 3,
-  goal: 'company profitability, personal financial gain, innovative, omg',
-},
-{
-  idea: 'Gather immense amount of tires.  The older the better.  Find a town near a mountain that looks like it could be a dormant volcano.  Climb the mountain.  Pile the vast amount of old tires into a hole near the top of the mountain.  Any hole will do so long as they all fit.  Light those bitches on fire.  Run down the mountain screaming that she\'s gonna blow.  Tell anyone that will listen that your GrandDaddy always thought this rock would sing.  Wait out the mass evacuation.  Claim the town as your own.  Possession is nine tenths of the law.',
-  tags: 'crazy, mountain, volcano, stealing, steal, theft, grand theft, mayor, ownership, town, city, tires, tire, old tires, granddaddy, fire, fires, deviant',
-  level: 3,
-  goal: 'personal financial gain, omg, innovation'
-},
-{
-  idea: 'Start a public access tv show about gladiators fighting dinosaurs to gain viewership.  Attract network execs with goofy side segments a la Wayne\'s World.  Once you go national, switch programming to ultra right wing religious conservatism.  Talk about stuff like the "end times" and "prophets" and "laser car wash franchises".  Demand people send you money for salvation and franchise ownership possiblites. Launch international network of sub public access channels and repeat process worldwide. Use your money to light your cuban cigars in your private jet apocalypse palace.',
-  tags: 'apocalypse, religion, christ, church, insanity, cable access, wayne\'s world, party time, excellent, bunker, bible, god, jesus, multi level marketing scheme, scheme, private jet, jets, ',
-  level: 3,
-  goal: 'creating your own religion, personal financial gain'
-}]                              
+  f: [
+      'finite resources',
+      'future-ability',
+      'faces',
+      'faces make faces',
+      'fear fears the fearful',
+      'fear being filled with fear',
+      'fearful optimism',
+      'fake numbers',
+      'fraudulent is felonious',
+      'free snake friday',
+      'free snack friday',
+      'feel your feels',
+      'feels lead to feeling',
+      'friction only lead to slowdown',
+      'finger guns close sales',
+      'freedom to freely be free'
+  ],
 
-console.log(badBusinessIdeaArray[2].idea);
+  g: [
+      'grab awesome',
+      'go get it',
+      'gravitate towards greatness',
+      'greatness never paid for freedom',
+      'gaps are traps',
+      'gauge the room',
+      'growing can be good',
+      'growing can be bad',
+      'growing is knowing',
+      'get after it',
+      'granular greed',
+      'gratification is gratifying',
+      'greatness at the expense of good',
+      'good is the enemy of great',
+      'great is the enemy of awesome',
+      'gather resources'
+  ],
 
-const pageCheck = function(){
-  if (pageBody.className === "surveyPage") {
-    localStorage.clear()
-    const mainSurveyButton = document.querySelector('#iniSurvey')
-    const mainHidden = document.querySelector('#hiddenForm')
-    const surveyForm = document.querySelector('#bbiQuestions')
-    mainHidden.style.visibility = 'hidden'
+  h: [
+      'help others be helpful',
+      'hardcore profits',
+      'healthy greed',
+      'healthy health',
+      'health is not wealth',
+      'hit your targets',
+      'home is not work',
+      'honor',
+      'honor is also honour',
+      'honor and health',
+      'honor thy boss',
+      'how is your mom?'
+  ],
 
-    mainSurveyButton.addEventListener('click', function(e){
-      if (mainHidden.style.visibility === 'hidden') {
-          mainHidden.style.visibility = 'visible'
-      } else {
-          mainHidden.style.visibility = 'hidden'
-      }
-    })
+  i: [
+      'ignore trends',
+      'institute goals',
+      'ingratiation will be tolerated',
+      'ingest greatness',
+      'incite a riot of profit',
+      'institute ideas',
+      'ideas are idyllic',
+      'ideas drive innovation',
+      'ignore fear',
+      'ignore the imitators',
+      'imitate whenever you can',
+      'imitation is success',
+      'in-fighting is not encouraged',
+      'insignificance is not allowed',
+      'imagine images',
+      'imagination can be imaginative'
+  ],
 
-    const randBusArrayLength = randBusinessGoal.length - 1
-    const contingencyRan = randBusinessGoal[Math.floor(Math.random() * randBusArrayLength)]
+  j: [
+      'jumble ideas',
+      'jigsaw the norm',
+      'join together',
+      'jump at opportunity',
+      'jam your day with money',
+      'jumble convention',
+      'jump for great ideas',
+      'jump into success',
+      'jingle all the way'
+  ],
 
-    surveyForm.addEventListener('submit', function(e){
-      if (e.target.elements.inputImpAttrib.value === "Random") {
-        e.target.elements.inputImpAttrib.value = contingencyRan
-      }
-      surveyName = 'First Name: ' + e.target.elements.fName.value
-      busType = 'Current Business: ' + e.target.elements.inputBusType4.value
-      busTypeClean = e.target.elements.inputBusType4.value
-      yrsTenure = 'Years at business: ' + e.target.elements.inputYrsEmp.value
-      ideaImpact = 'Desired Impact: ' + e.target.elements.inputIdeaImpact.value
-      ideaImpactClean = e.target.elements.inputIdeaImpact.value
-      freudGo = 'Word Association: ' + e.target.elements.inputFreud.value
-      freudGoClean = e.target.elements.inputFreud.value
-      busAttrib = 'Business Goal: ' + e.target.elements.inputImpAttrib.value
-      busAttribClean = e.target.elements.inputImpAttrib.value
-      localStorage.setItem('First Name', surveyName)
-      localStorage.setItem('Business Type', busType)
-      localStorage.setItem('Business Type Clean', busTypeClean)
-      localStorage.setItem('Tenure', yrsTenure)
-      localStorage.setItem('Idea Impact', ideaImpact)
-      localStorage.setItem('Idea Impact Clean', ideaImpactClean)
-      localStorage.setItem('Freud', freudGo)
-      localStorage.setItem('Freud Clean', freudGoClean)
-      localStorage.setItem('Bus Attribute', busAttrib)
-      localStorage.setItem('Bus Attribute Clean', busAttribClean)
+  k: [
+      'kick down doors',
+      'karate chop opposition',
+      'kingpins are winners',
+      'kindness never got a bonus',
+      'kick start briliance',
+      'keep moving fast',
+      'keep it simple',
+      'keep your courage',
+      'keep your keys',
+      'keys unlock things',
+      'keys of imagination unlock dreams',
+      'know the unknowns',
+      'knowledge is knowing you can know',
+      'know what you know',
+      'know that knowing is courage',
+      'know when to know',
+      'keep knowing'
+  ],
 
+  l: [
+      'love yourself',
+      'light a fire of greatness',
+      'list your goals',
+      'learn from your enemy',
+      'leave stupid at the door',
+      'legs take you places',
+      'learn to learn',
+      'live to learn',
+      'love to live',
+      'love to learn',
+      'lean in',
+      'lose nothing',
+      'lose yourself in greed',
+      'lava is failure',
+      'let it go, let it go'
+  ],
 
-    })
-  } else if (pageBody.className === "resultsPage") {
-      const listName = localStorage.getItem('First Name')
-      const listBusType = localStorage.getItem('Business Type')
-      const listTenure = localStorage.getItem('Tenure')
-      const listIdeaImpact = localStorage.getItem('Idea Impact')
-      const listFreud = localStorage.getItem('Freud')
-      const listBusAtrrib = localStorage.getItem('Bus Attribute')
-      document.querySelector('#result1').textContent = listName
-      document.querySelector('#result2').textContent = listBusType
-      document.querySelector('#result3').textContent = listTenure
-      document.querySelector('#result4').textContent = listIdeaImpact
-      document.querySelector('#result5').textContent = listFreud
-      document.querySelector('#result6').textContent = listBusAtrrib
+  m: [
+      'marginalize everything',
+      'make things better',
+      'move at the speed of movement',
+      'make moves',
+      'minimize thought',
+      'minimize loss',
+      'minimize loss of thought',
+      'minimize forfeiture',
+      'minimize minimizing',
+      'maximize thought',
+      'maximize loss of loss',
+      'maximize forfeitures of forfeits',
+      'maximize profits',
+      'manuever change',
+      'manuever profit obsticles'
+  ],
 
-      const seps = ['-', ':']
+  n: [
+      'normalize normality',
+      'normal is not normal',
+      'needs are like needy wants',
+      'navigate change',
+      'navigate profits',
+      'navigate greed',
+      'navigate collaboration',
+      'not all heroes wear capes',
+      'never give up profits',
+      'night time is the right time',
+      'navigate courage',
+      'navigate sales',
+      'navigate energy',
+      'navigate normal',
+      'notches are for belts'
+  ],
 
-      let spName = listName.split(":")
-      let spBus = listBusType.split(":")
-      let spYrs = listTenure.split(":")
-      let secspYrs = listTenure.split(":")
-      let spFreud = listFreud.split(":")
-      let spAtt = listBusAtrrib.split(":")
+  o: [
+      'oppose change',
+      'oppose failure',
+      'operate at high efficiency',
+      'oppose losing profits',
+      'oppose the poseable',
+      'oppose the posers',
+      'operate operationally',
+      'overestimate estimates',
+      'overreach the unreachable',
+      'overcompensate and underwhelm',
+      'over promise and under deliver',
+      'overt courage',
+      'overt profitability',
+      'over the top',
+      'open door policy',
+      'openness and honesty',
+      'open to more profits',
+      'open to closed ideas',
+      'open to change',
+      'open to courage',
+      'open to opportunity'
+  ],
 
-      spName = spName[1]
-      spBus = spBus[1]
-      spYrs = spYrs[1]
-      secspYrs = secspYrs[2]
-      spFreud = spFreud[1]
-      spAtt = spAtt[1]
+  p: [
+      'prepare, prepare, prepare',
+      'postpone losses',
+      'presuppose suppositions',
+      'propose courage',
+      'prepay parking',
+      'prevent forfeitures',
+      'prevent failure',
+      'pregame the big game',
+      'pass the buck',
+      'prefill the forms',
+      'postpone collaboration',
+      'preemptive co-operation',
+      'preliminary prepository prepositions',
+      'pay it forward',
+      'positive change',
+      'preemptive profits',
+      'prequalify success'
+    ],
 
-      const nameArrayLength = hateYourNameArray.length - 1
-      const jobArrayLength = hateYourJobArray.length - 1
-      const laughYrsLength = laughableYearsArray.length - 1
-      const freudLength = freudJudgementArray.length - 1
-      const busGoalLength = businessGoalJudgement.length - 1
+  q: [
+      'quiz success',
+      'quell the haters',
+      'quick judgements',
+      'quick responsiveness',
+      'quick success',
+      'quiz the norm',
+      'quick profits',
+      'quake with success',
+      'quake with courage',
+      'quake with collaboration',
+      'quake II was awesome'
+  ],
 
-      const badBusLength = badBusinessIdeaArray.length - 1
+  r: [
+      'responsive design',
+      'reasonable is nothing',
+      'react reactively',
+      'revise your success',
+      'revisit visitation schedules',
+      'remove doubt',
+      'remove fear',
+      'remove complexity',
+      'remove the norm',
+      'react with courage',
+      'react with ideas',
+      'react with profitable rage',
+      'reason with collaboration',
+      'reason opposed to reaction',
+      'reaction opposes to reason',
+      'remove reaction',
+      'remove reason',
+      'relive the good times',
+      'relive the bad times',
+      'reconstitute sales',
+      'reconstitute courage',
+      'reconstitute opposition'
+  ],
 
+  s: [
+      'supply demand',
+      'source resources',
+      'supplant suppositions',
+      'subvert the norm',
+      'subject matter experts',
+      'sever the bad',
+      'sever the fear',
+      'sever the doubt',
+      'severus snape',
+      'suppose better profits',
+      'suppose courage',
+      'sequence the sequential',
+      'standby for success',
+      'sell the sellable things',
+      'sales first, courage whenever',
+      'sales first, success pre-first',
+      'sales first, profits first',
+      'standardize amazingness',
+      'supercalifragilisticexpialidocious',
+      'stand down for sucking',
+      'stand up for profits',
+      'stand still never',
+      'swing for the fences'
+  ],
 
-      const pName = hateYourNameArray[Math.floor(Math.random() * nameArrayLength)]
-      const pJob = hateYourJobArray[Math.floor(Math.random() * jobArrayLength)]
-      const pYrs = laughableYearsArray[Math.floor(Math.random() * laughYrsLength)]
-      const pFreud = freudJudgementArray[Math.floor(Math.random() * freudLength)]
-      const pGoal = businessGoalJudgement[Math.floor(Math.random() * busGoalLength)]
+  t: [
+      'total control',
+      'take control',
+      'turn a profit',
+      'turn to success',
+      'turn to courage',
+      'turn to ideas',
+      'take time to win',
+      'take competitors by force',
+      'twist the truth',
+      'truth and time management',
+      'truth and ideas',
+      'truth and success',
+      'truth and collaboration',
+      'truth and courage',
+      'turn up the heat',
+      'take a dive',
+      'try change',
+      'try success',
+      'try profits',
+      'try winning',
+      'try collaboration',
+      'try and try again',
+      'twist words to win'
+  ],
 
-      const pBad = badBusinessIdeaArray[Math.floor(Math.random() * badBusLength)]
-      let pBadTag = ''
-      let arrayDecision = []
-      const cleanTag = localStorage.getItem('Freud Clean').toLowerCase().trim()
+  u: [
+      'underachieve',
+      'underwhelm',
+      'use good judgement',
+      'unilateral decision making',
+      'unimaginative ideas',
+      'understanding',
+      'understanding ideas',
+      'understanding demand',
+      'understanding sales',
+      'understanding decisions',
+      'undo your mistakes',
+      'undo your failures',
+      'undo your fear',
+      'undo your doubt'
+  ],
 
-      for (var i = 0; i < badBusinessIdeaArray.length; i++) {
-        let modTags = badBusinessIdeaArray[i].tags.split(",")
-        console.log(modTags);
-        for (var z = 0; z < modTags.length; z++) {
-          if (modTags[z].includes(cleanTag)) {
-            arrayDecision.push(badBusinessIdeaArray[i].idea)
-          }
-        }
-      }
+  v: [
+    'vulcanize your drive',
+    'vacate fear',
+    'vote for courage',
+    'validate profits',
+    'validate sales',
+    'validate self',
+    'validate success',
+    'visible ideas',
+    'visible imagination',
+    'vroom vroom the business',
+  ],
 
-      console.log(cleanTag);
-      console.log(pBad);
-      console.log(arrayDecision);
+  w: [
+    'watch greatness',
+    'wish for change',
+    'wish for courage',
+    'water down ideas',
+    'waffle on ideas',
+    'wag the dog',
+    'wind up the business',
+    'waiver on the complex',
+    'witness imagination',
+    'witness change',
+    'witness struggle',
+    'wise up',
+    'worry for nothing',
+  ],
 
-      const arrayDecLength = arrayDecision.length
-      const arrayDecLength2 = arrayDecision.length - 1
+  x: [
+    'x-amine ideas',
+    'x-ceed goals',
+    'x-ceed the normal',
+    'x-treme profits',
+    'x-ert dominance',
+    'x-ert compliance',
+    'x-ceed greatness'
+  ],
 
-      if (arrayDecLength === 1) {
-        pBadTag = arrayDecision[0]
-      } else if (arrayDecLength > 1) {
-        pBadTag = arrayDecision[Math.floor(Math.random() * arrayDecLength2)]
-      } else {
-        pBadTag = pBad.idea
-      }
+  y: [
+    'you are the engine',
+    'you make business run',
+    'you are the idea',
+    'y axis to 100%',
+    'you are courage',
+    'you are success',
+    'you are profit',
+    'yesterday is not today',
+    'yesterday was yesterday',
+    'yesterday\'s idea is today\'s success',
+    'you are courage',
+    'you believe in you',
+    'you are sales',
+    'youth is the product of invention',
+    'yes is the best no',
+    'yes is not a no',
+    'yes is an idea',
+    'yes is power',
+    'yes is courage',
+    'yes is not fear',
+    'yes is never no',
+    'yesterday is never today',
+    'yes rhymes with business'
+  ],
 
-      const mashUp = `So, your name is ${spName}.  That is ${pName} And let\'s see here.  As your current business you selected ${spBus} ${pJob} The years at business question is unique. It provides me both a time constraint, but more importantly a "general feeling" you have about your business.  Your general feeling comment was ${secspYrs}. This comment has allowed me to breach your fleshy goo spaces and extract business data.  You indicated a time constraint of ${spYrs}. ${pYrs} The first word that came to your head was ${spFreud}. I mean really? ${pFreud} Lastly, the business goal you selected was ${spAtt}. I am going to brutally, robotically honest here. ${pGoal} But all that being said, let us take a look at the customized Bad Business Idea that my robot algorithm, acquired for the low price of 3 human souls, has come up with for you. *begin happy computing noises* `
+  z: [
+    'zanny ideas are still ideas',
+    'zuckerburg had an idea',
+    'ziti is the pasta of success',
+    'zero is the number of times you should fail',
+    'zero is more than nothing',
+    'zero is still a number',
+    'zero is not a target',
+    'zero courage is not dominance',
+    'zero mistakes',
+    'zero hate',
+    'zero forfeiture',
+    'zero tolerance',
+    'zero windbreakers',
+    'zero is an idea thats ready to be a one',
+    'zero cannot be divided'
+  ]
 
-      document.querySelector('#conclusionsMashup').textContent = mashUp
-      document.querySelector('#badBusinessIdea').textContent = pBadTag
-  }
+}
+console.log(thanos.a.length);
+
+const randomLetter = function(obj, val){
+  result = Math.floor(Math.random() * obj[val].length)
+  console.log(obj[val].length);
+  console.log(result);
+  return result
 }
 
-pageCheck()
 
 
+const getValue = function(inputVal){
+  let broken = inputVal.split('')
+  let resultArr = []
+  for (var i = 0; i < broken.length; i++) {
+    let parseArr = randomLetter(thanos, broken[i])
+    if (!resultArr.includes(thanos[broken[i]][parseArr])) {
+      resultArr.push(thanos[broken[i]][parseArr])
+    } else {
+      while (resultArr.includes(thanos[broken[i]][parseArr])) {
+        parseArr = randomLetter(thanos, broken[i])
+      }
+      resultArr.push(thanos[broken[i]][parseArr])
+    }
+  }
+  return resultArr
+}
 
-// $(function(){
-//   if($('body').is('.surveyPage')){
-//       const mainSurveyButton = document.querySelector('#iniSurvey')
-//       const mainHidden = document.querySelector('#hiddenForm')
-//       const surveyForm = document.querySelector('#form-one')
-//       mainHidden.style.visibility = 'hidden'
-//
-//       mainSurveyButton.addEventListener('click', function(e){
-//         if (mainHidden.style.visibility === 'hidden') {
-//             mainHidden.style.visibility = 'visible'
-//         } else {
-//             mainHidden.style.visibility = 'hidden'
-//         }
-//       })
-//
-//       surveyForm.addEventListener('submit', function (e) {
-//         e.preventDefault()
-//         surveyName = e.target.elements.fName.value
-//         console.log(surveyName);
-//
-//       })
-//
-//   }
-//
-// })
+document.querySelector('#hrGen').addEventListener('submit', function(e){
+  e.preventDefault()
+  const uIput = e.target.elements.acronymIP.value.toLowerCase().trim()
+  console.log(uIput);
+  const mResult = getValue(uIput.trim())
+  console.log(mResult);
+  const uiputSpl = uIput.split('')
+  const getEl = document.getElementById('mainContain')
+  let timeOne = 1000
+  let timeTwo = 1500
+  for (var i = 0; i < uiputSpl.length; i++) {
 
-// const mainSurveyButton = document.querySelector('#iniSurvey')
-// const mainHidden = document.querySelector('#hiddenForm')
-// mainHidden.style.visibility = 'hidden'
-//
-// mainSurveyButton.addEventListener('click', function(e){
-//   if (mainHidden.style.visibility === 'hidden') {
-//       mainHidden.style.visibility = 'visible'
-//   } else {
-//       mainHidden.style.visibility = 'hidden'
-//   }
-// })
+    const contDiv = document.createElement('div')
+    const letterDiv = document.createElement('div')
+    letterDiv.style.display ='none'
+    letterDiv.textContent = uiputSpl[i]
+    const arrResDiv = document.createElement('div')
+    arrResDiv.style.display = 'none'
+    arrResDiv.textContent = mResult[i]
+    contDiv.classList.add('row')
+    letterDiv.classList.add('col-2')
+    letterDiv.id = 'let' + [i]
+    arrResDiv.classList.add('col-10')
+    arrResDiv.id = 'arr' + [i]
+    getEl.appendChild(contDiv)
+    contDiv.appendChild(letterDiv)
+    contDiv.appendChild(arrResDiv)
 
+
+  }
+  for (var b = 0; b < uiputSpl.length; b++) {
+    $('#let'+[b]).delay(timeOne).fadeIn('fast')
+    timeOne += 1000
+  }
+  for (var c = 0; c < uiputSpl.length; c++) {
+    $('#arr'+[c]).delay(timeTwo).fadeIn('slow')
+    timeTwo += 1000
+  }
+
+})
