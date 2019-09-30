@@ -345,8 +345,8 @@ const thanos = {
       'subvert the norm',
       'subject matter experts',
       'sever the bad',
-      'sever the fear',
-      'sever the doubt',
+      'sever tied ties',
+      'sever the unsevered',
       'severus snape',
       'suppose better profits',
       'suppose courage',
@@ -359,9 +359,11 @@ const thanos = {
       'standardize amazingness',
       'supercalifragilisticexpialidocious',
       'stand down for sucking',
-      'stand up for profits',
-      'stand still never',
-      'swing for the fences'
+      'sweat less',
+      'sweet lawd',
+      'swing for the fences',
+      'secrets are fun',
+      'secrecy builds morale'
   ],
 
   t: [
@@ -387,7 +389,13 @@ const thanos = {
       'try winning',
       'try collaboration',
       'try and try again',
-      'twist words to win'
+      'twist words to win',
+      'total domination',
+      'tweak a nudge',
+      'try being cheap',
+      'tremble when scared',
+      'tame the untameable',
+      'twister is not office approved'
   ],
 
   u: [
@@ -404,7 +412,8 @@ const thanos = {
       'undo your mistakes',
       'undo your failures',
       'undo your fear',
-      'undo your doubt'
+      'undo your doubt',
+      'ubiquitous ubiquity'
   ],
 
   v: [
@@ -418,6 +427,7 @@ const thanos = {
     'visible ideas',
     'visible imagination',
     'vroom vroom the business',
+    'velociraptor the weak'
   ],
 
   w: [
@@ -434,6 +444,7 @@ const thanos = {
     'witness struggle',
     'wise up',
     'worry for nothing',
+    'where\'s waldo?'
   ],
 
   x: [
@@ -443,7 +454,8 @@ const thanos = {
     'x-treme profits',
     'x-ert dominance',
     'x-ert compliance',
-    'x-ceed greatness'
+    'x-ceed greatness',
+    'x is a stupid letter'
   ],
 
   y: [
