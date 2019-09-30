@@ -519,13 +519,10 @@ const getValue = function(inputVal){
   return resultArr
 }
 
-document.querySelector('#hrGen').addEventListener('submit', function(e){
-  e.preventDefault()
-  const uIput = e.target.elements.acronymIP.value.toLowerCase().trim()
-  console.log(uIput);
-  const mResult = getValue(uIput.trim())
-  console.log(mResult);
-  const uiputSpl = uIput.split('')
+const supplyValues = function(param){
+  $('#mainContain').empty()
+  const mResult = getValue(param.trim())
+  const uiputSpl = param.split('')
   const getEl = document.getElementById('mainContain')
   let timeOne = 1000
   let timeTwo = 1500
@@ -546,8 +543,6 @@ document.querySelector('#hrGen').addEventListener('submit', function(e){
     getEl.appendChild(contDiv)
     contDiv.appendChild(letterDiv)
     contDiv.appendChild(arrResDiv)
-
-
   }
   for (var b = 0; b < uiputSpl.length; b++) {
     $('#let'+[b]).delay(timeOne).fadeIn('fast')
@@ -557,5 +552,10 @@ document.querySelector('#hrGen').addEventListener('submit', function(e){
     $('#arr'+[c]).delay(timeTwo).fadeIn('slow')
     timeTwo += 1000
   }
+}
 
+document.querySelector('#hrGen').addEventListener('submit', function(e){
+  e.preventDefault()
+  const uIput = e.target.elements.acronymIP.value.toLowerCase().trim()
+  supplyValues(uIput)
 })
