@@ -1,33 +1,75 @@
 .jumbotron{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.25)), url("https://i.imgur.com/5GVJMAn.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.25)), url("https://www.menaitech.com/wp-content/uploads/2016/02/top-4-reasons-to-invest-in-hr-system-in-saudi-arabia.jpg");
   background-position: center;
   background-size: cover;
   text-align: left;
   color: white;
   font-family: 'Righteous', cursive;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
+#mwLogo{
+  text-align: center;
 
-.col-2{
-  text-align: right;
+}
+#breakQ{
+  padding-top: 5px;
+}
+.col-1{
+  text-align: center;
   font-size: 35px;
   font-weight: bold;
-  width: 50px;
+  padding-left: 40px;
+  margin-bottom: 5px;
 }
-.col-10{
+.col-8{
   padding-top: 20px;
-
+  text-align: left;
+  margin-left: 10px;
 }
 #mainContain{
-  margin: 0;
+  text-align: center;
+  padding-bottom: 15px;
+  min-width: 400px;
+
 }
-#acronymIP{
-  margin-bottom: 15px;
-  width: 200px;
+#defDiv, #thesDiv{
+  min-width: 300px;
+
 }
+
 body{
-  background-color: #d7e0da;
   font-family: 'Righteous', cursive;
+  background-color: #f0f0f0;
 }
 html{
   font-family: 'Righteous', cursive;
+}
+p{
+  margin: 0;
+}
+ul{
+  font-size: 1.25em;
+}
+li{
+  font-size: .75em;
+}
+h3{
+  text-align: center;
+}
+#valueSub{
+  margin-top: 15px;
+}
+#fineprint{
+  font-size: 0.50em;
+}
+#logo{
+  height: 120px;
+  width: 120px;
+}
+.clearfix::after {
+   content: " ";
+   display: block;
+   height: 0;
+   clear: both;
 }
