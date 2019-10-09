@@ -717,3 +717,11 @@ document.querySelector('#hrGen').addEventListener('submit', function(e){
   console.log(finalCalc);
   getDef(uIput, finalCalc)
 })
+//
+$(window).scroll(function () {
+if ($(window).scrollTop() >= 100) {
+$('.navbar').css('background','#007efc');
+} else {
+$('.navbar').css('background','transparent');
+}
+});
