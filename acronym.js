@@ -551,7 +551,7 @@ const getDef = async function(paramW, paramC){
     const mwLogoDiv = document.querySelector('#mwLogo')
     const defDiv = document.createElement('ul')
     defDiv.id = 'defDiv'
-    defDiv.classList.add = 'col-6'
+    defDiv.classList.add = 'defList'
     defDiv.style.display = 'none'
     defDiv.textContent = 'Couldn\'t locate ' + paramW + ' maybe you meant: '
     const mainDiv = document.querySelector('#breakP')
@@ -615,13 +615,13 @@ const getDef = async function(paramW, paramC){
       const mwLogoDiv = document.querySelector('#mwLogo')
       const defDiv = document.createElement('ul')
       defDiv.id = 'defDiv'
-      defDiv.classList.add = 'col-6'
+      defDiv.classList.add = 'defList'
       defDiv.style.display = 'none'
       defDiv.textContent = 'Definition for ' + paramW + ':'
 // THIS BUILDS THE THESAURUS SYNS SECTION AND ITS CONTENTS
       const thesDiv = document.createElement('ul')
       thesDiv.id = 'thesDiv'
-      thesDiv.classList.add = 'col-6'
+      thesDiv.classList.add = 'thesList'
       thesDiv.style.display = 'none'
       thesDiv.textContent = 'Similar to ' + paramW + ':'
 // THIS WORKS ON THE DEFINITION ARRAY AND CREATES A NEW LIST ITEM FOR EVERY DEF THAT EXISTS
