@@ -691,19 +691,19 @@ const supplyValues = function(param){
     arrResDiv.textContent = mResult[i]
     contDiv.classList.add('row')
     letterDiv.classList.add('col-1')
-    letterDiv.id = 'let' + [i]
+    letterDiv.id = 'letDink' + '-' + [i]
     arrResDiv.classList.add('col-8')
-    arrResDiv.id = 'arr' + [i]
+    arrResDiv.id = 'arrDunk' + '-' + [i]
     getEl.appendChild(contDiv)
     contDiv.appendChild(letterDiv)
     contDiv.appendChild(arrResDiv)
   }
   for (var b = 0; b < uiputSpl.length; b++) {
-    $('#let'+[b]).delay(timeOne).fadeIn('fast')
+    $('#letDink-'+[b]).delay(timeOne).fadeIn('fast')
     timeOne += 1000
   }
   for (var c = 0; c < uiputSpl.length; c++) {
-    $('#arr'+[c]).delay(timeTwo).fadeIn('slow')
+    $('#arrDunk-'+[c]).delay(timeTwo).fadeIn('slow')
     timeTwo += 1000
   }
   return timeTwo

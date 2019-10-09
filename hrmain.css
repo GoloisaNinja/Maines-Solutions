@@ -23,14 +23,14 @@
 #breakQ{
   padding-top: 5px;
 }
-.col-1{
+[id^='letDink']{
   text-align: center;
   font-size: 35px;
   font-weight: bold;
   padding-left: 40px;
   margin-bottom: 5px;
 }
-.col-8{
+[id^='arrDunk']{
   padding-top: 20px;
   text-align: left;
   margin-left: 10px;
