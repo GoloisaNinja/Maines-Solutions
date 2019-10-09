@@ -1,3 +1,6 @@
+// OBJECT OF ARRAYS SEPARATED BY BEGINNING WORD
+//
+
 const thanos = {
 
   a: [
@@ -505,6 +508,8 @@ const thanos = {
 }
 console.log(thanos.a.length);
 
+// TAKES INPUT OF THANOS OBJECT AND INPUT OF LETTER FROM STRING SPLIT BELOW TO RETURN A RANDOM NUMBER BASED ON THE INDIVIDUAL ARRAY LENGHT OF THE INPUT LETTER
+
 const randomLetter = function(obj, val){
   result = Math.floor(Math.random() * obj[val].length)
   console.log(obj[val].length);
@@ -512,8 +517,142 @@ const randomLetter = function(obj, val){
   return result
 }
 
+// QUICK RANDOM ASSIGNMENT BASED ON KNOWN ARRAY INPUT
 
+const randArrPick = function(arr){
+  con = Math.floor(Math.random() * arr.length)
+  return arr[con]
+}
 
+// NEEDS REFACTORING - BUT THIS FUNCTION AS IT STANDS DOES MANY THINGS
+// FIRST WE GET THE MERRIAM-WESBSTER API RESULTS IN ASYNC FUNCTION
+// THEN WE CHECK IF THAT RESPONSE CONTAINS WHAT WE NEED - A DEF AND A LIST OF META data
+// IF IT DOESN'T, WE RETURN PRETTY BASIC RESULTS FROM THE API AND GIVE A STANDARD MESSAGE
+// IF IT DOES, WE CREATE DIVS AND UL LISTS TO HOUSE THE DATA FROM THE API
+// THE API IS HEAVILY NESTED SO MANY FOR LOOPS AND WHILE LOOPS DO THE HEAVY LIFTING
+// END RESULT IS CONTENT DEFINITIONS SPECIFIC TO INPUT AND OTHER SYNONYM SUGGESTIONS
+// JQUERY IS USED TO FADE THESE IN - TIMING EVENTS WAS TRICKY SO I USE VARIABLES TO TIME EVENTS BASED ON THE LAST EVENT FINISHING
+// PROLLY A LIBRARY FOR THAT...
+// NOTICE THE FUNC TAKES PARAMS FOR WORD AND TIMING
+
+const getDef = async function(paramW, paramC){
+
+  $('#breakQ').empty()
+  $('#breakP').empty()
+  $('#mwLogo').hide()
+  const response = await fetch("https://dictionaryapi.com/api/v3/references/thesaurus/json/" + paramW + "?key=5b5fb80f-b35f-4d88-a308-5435b2c0de50")
+  const dictData = await response.json()
+  console.log(dictData);
+
+// CHECKING FOR SPECIFIC DATA - CANT JUST DO A 200/400 CHECK AS THERE IS ALWAYS A SUCCESSFUL RETURN EVEN IF THE WORD DOESN'T EXIST
+// IF DATA DOESN'T RETURN EXPECTED RESULT - FASHION A BASIC CANNED RESPONSE THAT IS SOMEWHAT DYNAMIC
+
+  if (dictData[0]['meta'] === undefined || dictData[0]['shortdef'] === undefined) {
+    const mwLogoDiv = document.querySelector('#mwLogo')
+    const defDiv = document.createElement('ul')
+    defDiv.id = 'defDiv'
+    defDiv.classList.add = 'col-6'
+    defDiv.style.display = 'none'
+    defDiv.textContent = 'Couldn\'t locate ' + paramW + ' maybe you meant: '
+    const mainDiv = document.querySelector('#breakP')
+    mainDiv.appendChild(defDiv)
+    for (var i = 0; i < dictData.length; i++) {
+      const innerDef = document.createElement('li')
+      innerDef.textContent = dictData[i]
+      innerDef.id = "innerDef" + [i]
+      defDiv.appendChild(innerDef)
+    }
+    $(defDiv).delay(paramC+500).fadeIn('slow')
+    $(mwLogoDiv).delay(paramC+1500).fadeIn('fast')
+// ELSE WE ATTACK THE API AND ALL THE NESTING
+  } else {
+// THIS PULLS THE SYNONYMS AND BUILDS THEM INTO A NEW ARRAY
+      let synsArr = []
+      let synsArrSplit = []
+      let finalSyns = []
+      for (var v = 0; v < dictData.length; v++) {
+        let mysyns = dictData[v]['meta']['syns']
+        console.log(mysyns);
+        for (var w = 0; w < mysyns.length; w++) {
+          let tempsyns = mysyns[w]
+            for (var p = 0; p < tempsyns.length; p++) {
+              synsArrSplit.push(tempsyns[p])
+            }
+        }
+      }
+// IF THE NEW ARRAY IS OF CERTAIN LENGTH ONLY GIVE UP TO 15 SUGGESTIONS - IF IT'S SMALLER THAN 15 - GIVE ALL THAT EXIST
+      if (synsArrSplit.length < 14) {
+          finalSyns = synsArrSplit
+        } else {
+        for (var s = 0; s < 16; s++) {
+          let selectThes = randArrPick(synsArrSplit)
+          if (!finalSyns.includes(selectThes)) {
+            finalSyns.push(selectThes)
+          } else {
+            while (finalSyns.includes(selectThes)) {
+              selectThes = randArrPick(synsArrSplit)
+            }
+            finalSyns.push(selectThes)
+          }
+        }
+      }
+      console.log(synsArrSplit);
+      console.log(finalSyns);
+      console.log(dictData[0]['fl']);
+      const def = dictData[0]['shortdef']
+// THIS GETS ALL TYPES OF DEFS FROM API OBJECT ARRAY - FOR INSTANCE NOUN DEFS ADJ DEFS AND VERB DEFS IF THEY EXIST
+      const finalDefwType = []
+      for (var c = 0; c < dictData.length; c++) {
+        let typeW = dictData[c]['fl'] + ': '
+        for (var d = 0; d < dictData[c]['shortdef'].length; d++) {
+          let comboW = typeW + dictData[c]['shortdef'][d]
+          finalDefwType.push(comboW)
+        }
+      }
+      console.log(finalDefwType);
+      let defContent = ''
+// THIS BUILDS THE DEFINITION DIV AND ITS CONTENTS AND ALSO ASSIGNS THE LOGO DIV
+      const mwLogoDiv = document.querySelector('#mwLogo')
+      const defDiv = document.createElement('ul')
+      defDiv.id = 'defDiv'
+      defDiv.classList.add = 'col-6'
+      defDiv.style.display = 'none'
+      defDiv.textContent = 'Definition for ' + paramW + ' :'
+// THIS BUILDS THE THESAURUS SYNS SECTION AND ITS CONTENTS
+      const thesDiv = document.createElement('ul')
+      thesDiv.id = 'thesDiv'
+      thesDiv.classList.add = 'col-6'
+      thesDiv.style.display = 'none'
+      thesDiv.textContent = 'Instead of ' + paramW + ' try one of these : '
+// THIS WORKS ON THE DEFINITION ARRAY AND CREATES A NEW LIST ITEM FOR EVERY DEF THAT EXISTS
+
+      const mainDiv = document.querySelector('#breakP')
+      mainDiv.appendChild(defDiv)
+      for (var i = 0; i < finalDefwType.length; i++) {
+        const innerDef = document.createElement('li')
+        innerDef.textContent = finalDefwType[i]
+        innerDef.id = "innerDef" + [i]
+        defDiv.appendChild(innerDef)
+      }
+// THIS WORKS THE THESAURUS ARRAY AND CREATES A NEW LIST ITEM FOR EVERY SYN THAT EXISTS
+
+      const secMainDiv = document.querySelector('#breakQ')
+      secMainDiv.appendChild(thesDiv)
+      for (var q = 0; q < finalSyns.length; q++) {
+        const innerThes = document.createElement('li')
+        innerThes.textContent = finalSyns[q]
+        innerThes.id = "innerThes" + [q]
+        thesDiv.appendChild(innerThes)
+      }
+// THIS FADES THE ELEMENTS IN NICELY - NOTE THE TIME PARAMS USED
+      $(defDiv).delay(paramC+1000).fadeIn('slow')
+      $(thesDiv).delay(paramC+500).fadeIn('slow')
+      $(mwLogoDiv).delay(paramC+1500).fadeIn('fast')
+    }
+}
+
+// THIS INTERPRETS THE USER INPUT - SPLITS THE STRING INTO AN ARRAY AND FOR EACH LETTER USES FUCNTIONS TO GET RANDOM STATEMENTS FROM THE APPROPRIATE LETTER IN THANOS OBJECT ARRAY
+// RETURNS RESULT AS AN ARRAY
 const getValue = function(inputVal){
   let broken = inputVal.split('')
   let resultArr = []
@@ -531,8 +670,10 @@ const getValue = function(inputVal){
   return resultArr
 }
 
+// CLEANS CONTENT IF IT EXISTS AND CREATES THE DIVS TO SUPPLY THE RESULTS
 const supplyValues = function(param){
   $('#mainContain').empty()
+  $('#welcome').fadeIn(500)
   const mResult = getValue(param.trim())
   const uiputSpl = param.split('')
   const getEl = document.getElementById('mainContain')
@@ -542,15 +683,16 @@ const supplyValues = function(param){
 
     const contDiv = document.createElement('div')
     const letterDiv = document.createElement('div')
+    contDiv.id = "contDiv"
     letterDiv.style.display ='none'
     letterDiv.textContent = uiputSpl[i]
     const arrResDiv = document.createElement('div')
     arrResDiv.style.display = 'none'
     arrResDiv.textContent = mResult[i]
     contDiv.classList.add('row')
-    letterDiv.classList.add('col-2')
+    letterDiv.classList.add('col-1')
     letterDiv.id = 'let' + [i]
-    arrResDiv.classList.add('col-10')
+    arrResDiv.classList.add('col-8')
     arrResDiv.id = 'arr' + [i]
     getEl.appendChild(contDiv)
     contDiv.appendChild(letterDiv)
@@ -564,10 +706,14 @@ const supplyValues = function(param){
     $('#arr'+[c]).delay(timeTwo).fadeIn('slow')
     timeTwo += 1000
   }
+  return timeTwo
+  console.log(timeOne+timeTwo);
 }
-
+// DOM LISTENS FOR CLICK OR ENTER KEY FORM SUBMIT
 document.querySelector('#hrGen').addEventListener('submit', function(e){
   e.preventDefault()
   const uIput = e.target.elements.acronymIP.value.toLowerCase().trim()
-  supplyValues(uIput)
+  const finalCalc = supplyValues(uIput)
+  console.log(finalCalc);
+  getDef(uIput, finalCalc)
 })
