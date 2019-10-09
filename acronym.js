@@ -617,13 +617,13 @@ const getDef = async function(paramW, paramC){
       defDiv.id = 'defDiv'
       defDiv.classList.add = 'col-6'
       defDiv.style.display = 'none'
-      defDiv.textContent = 'Definition for ' + paramW + ' :'
+      defDiv.textContent = 'Definition for ' + paramW + ':'
 // THIS BUILDS THE THESAURUS SYNS SECTION AND ITS CONTENTS
       const thesDiv = document.createElement('ul')
       thesDiv.id = 'thesDiv'
       thesDiv.classList.add = 'col-6'
       thesDiv.style.display = 'none'
-      thesDiv.textContent = 'Instead of ' + paramW + ' try one of these : '
+      thesDiv.textContent = 'Similar to ' + paramW + ':'
 // THIS WORKS ON THE DEFINITION ARRAY AND CREATES A NEW LIST ITEM FOR EVERY DEF THAT EXISTS
 
       const mainDiv = document.querySelector('#breakP')
