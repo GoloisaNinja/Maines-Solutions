@@ -730,6 +730,7 @@ document.querySelector('#hrGen').addEventListener('submit', function(e){
   const finalCalc = supplyValues(uIput)
   console.log(finalCalc);
   getDef(uIput, finalCalc)
+  e.target.elements.acronymIP.value = ''
 })
 //
 $(window).scroll(function () {
