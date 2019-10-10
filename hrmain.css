@@ -41,8 +41,12 @@
   margin-left: 10px;
 }
 body{
-  font-family: 'Righteous', cursive;
-  background-color: #f0f0f0;
+    font-family: 'Righteous', cursive;
+  /* background-color: #f0f0f0; */
+  background-image: url("https://www.menaitech.com/wp-content/uploads/2016/02/top-4-reasons-to-invest-in-hr-system-in-saudi-arabia.jpg");
+  background-position: left;
+  background-size: cover;
+  min-height: 2000px;
 }
 html{
   font-family: 'Righteous', cursive;
