@@ -615,13 +615,13 @@ const getDef = async function(paramW, paramC){
       const mwLogoDiv = document.querySelector('#mwLogo')
       const defDiv = document.createElement('ul')
       defDiv.id = 'defDiv'
-      defDiv.classList.add = 'col-6'
+      defDiv.classList.add = 'defs'
       defDiv.style.display = 'none'
       defDiv.textContent = 'Definition for ' + paramW + ':'
 // THIS BUILDS THE THESAURUS SYNS SECTION AND ITS CONTENTS
       const thesDiv = document.createElement('ul')
       thesDiv.id = 'thesDiv'
-      thesDiv.classList.add = 'col-6'
+      thesDiv.classList.add = 'thes'
       thesDiv.style.display = 'none'
       thesDiv.textContent = 'Similar to ' + paramW + ':'
 // THIS WORKS ON THE DEFINITION ARRAY AND CREATES A NEW LIST ITEM FOR EVERY DEF THAT EXISTS
@@ -717,3 +717,11 @@ document.querySelector('#hrGen').addEventListener('submit', function(e){
   console.log(finalCalc);
   getDef(uIput, finalCalc)
 })
+//
+$(window).scroll(function () {
+if ($(window).scrollTop() >= 100) {
+$('.navbar').css('background','#007efc');
+} else {
+$('.navbar').css('background','transparent');
+}
+});

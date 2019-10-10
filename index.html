@@ -8,17 +8,34 @@
     <title>Values</title>
   </head>
   <body style="opacity:0;">
-    <div class="jumbotron jumbotron-fluid" style="font-family: 'Righteous', cursive;">
-      <div class="container">
-    <h1 class="display-4">HUMAN + [RESOURCE]</h1>
-    <h6 class="lead">FINALLY A COMPANY VALUES GENERATOR!</h6>
-    <h6>ENTER A WORD TO GENERATE YOUR VALUES FROM</h6>
-    <form id="hrGen">
-      <input type="text" id="acronymIP" placeholder="reach"><br>
-      <button class="btn btn-primary btn-lg" type="submit" role="button" id="valueSub">Submit</button>
-    </form>
-  </div>
 
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: transparent;">
+<a class="navbar-brand navEl" href=#>Value Generator</a>
+<button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNavAltMarkup aria-controls=navbarNavAltMarkup aria-expanded=false aria-label="Toggle navigation" id="navButt">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="collapse navbar-collapse" id=navbarNavAltMarkup>
+<div class=navbar-nav>
+<a class="nav-item nav-link active navEl" href=#>Home <span class=sr-only>(current)</span></a>
+<a class="nav-item nav-link navEl" href=#>About Us</a>
+</div>
+</div>
+</nav>
+<div class=jumbotron id=mainJumbo>
+  <br>
+<div class=container id=mainJumCont>
+<h1 class=display-4 id=logoLead>HUMAN + [RESOURCE]</h1>
+<h3 class=lead>Submit a word to build your Corporate Vision around</h3>
+<div class=row>
+<div class=col-12>
+  <form id="hrGen">
+        <input type="text" id="acronymIP" placeholder="reach"><br>
+        <button class="btn btn-primary btn-lg" type="submit" role="button" id="valueSub">Submit</button>
+      </form>
+</div>
+</div>
+</div>
+</div>
 <div class="container">
   <h3 id="welcome" style="display: none;">WELCOME TO CORPORATE + [CULTURE]</h3>
   <br>
@@ -39,14 +56,12 @@
 </div>
 </div>
 <br>
-<div><p></p></div>
 <div class="container" id="divFine">
 <div id="mwLogo" style="display:none;">
-  <img id="logo" src="https://i.imgur.com/dpCgHcS.jpg">
+  <img id="logo" style="-webkit-user-select: none;margin: auto;" src="https://i.imgur.com/dpCgHcS.jpg">
   <p id="fineprint">Definitions and Synonyms provided by Merriam-Webster Inc.</p>
   <p id="fineprint">APIs used in this application: Merriam-Webster's Collegiate® Dictionary with Audio and Merriam-Webster's Collegiate® Thesaurus</p>
   <p id="fineprint">Register for use of the Merriam-Webster API at https://dictionaryapi.com/</p>
-</div>
 </div>
 </div>
 
