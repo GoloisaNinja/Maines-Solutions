@@ -549,21 +549,32 @@ const getDef = async function(paramW, paramC){
 
   if (dictData[0]['meta'] === undefined || dictData[0]['shortdef'] === undefined) {
     const mwLogoDiv = document.querySelector('#mwLogo')
+    const defDivCont = document.createElement('div')
+    defDivCont.style.textAlign = 'center'
+    const defDivTwoCont = document.createElement('div')
+    const defDivOops = document.createElement('h3')
+    defDivOops.textContent = 'OOPS...I DON\'T THINK THAT IS A WORD...'
+    defDivTwoCont.style.textAlign = 'left'
+    defDivTwoCont.style.display = 'inline-block'
     const defDiv = document.createElement('ul')
     defDiv.id = 'defDiv'
     defDiv.classList.add = 'defList'
     defDiv.style.display = 'none'
     defDiv.textContent = 'Couldn\'t locate ' + paramW + ' maybe you meant: '
     const mainDiv = document.querySelector('#breakP')
-    mainDiv.appendChild(defDiv)
+    mainDiv.appendChild(defDivCont)
+    defDivCont.appendChild(defDivOops)
+    defDivCont.appendChild(defDivTwoCont)
+    defDivTwoCont.appendChild(defDiv)
     for (var i = 0; i < dictData.length; i++) {
       const innerDef = document.createElement('li')
       innerDef.textContent = dictData[i]
       innerDef.id = "innerDef" + [i]
       defDiv.appendChild(innerDef)
     }
-    $(defDiv).delay(paramC+500).fadeIn('slow')
-    $(mwLogoDiv).delay(paramC+1500).fadeIn('fast')
+    $(defDivCont).css('opacity', 0).delay(paramC+500).fadeTo('slow', 1)
+    $(defDiv).css('opacity', 0).delay(paramC+1000).fadeTo('slow', 1)
+    $(mwLogoDiv).css('opacity', 0).delay(paramC+1500).fadeTo('slow', 1)
 // ELSE WE ATTACK THE API AND ALL THE NESTING
   } else {
 // THIS PULLS THE SYNONYMS AND BUILDS THEM INTO A NEW ARRAY
@@ -615,6 +626,11 @@ const getDef = async function(paramW, paramC){
       const mwLogoDiv = document.querySelector('#mwLogo')
       const defDivH = document.createElement('h3')
       const defDiv = document.createElement('ul')
+      const defDivRegCont = document.createElement('div')
+      const defDivRegContTwo = document.createElement('div')
+      defDivRegCont.style.textAlign = 'center'
+      defDivRegContTwo.style.textAlign = 'left'
+      defDivRegContTwo.style.display = 'inline-block'
       defDivH.style.display = 'none'
       defDivH.textContent = 'DESTINATION CULTURE [DEFINED]'
       defDiv.id = 'defDiv'
@@ -622,6 +638,11 @@ const getDef = async function(paramW, paramC){
       defDiv.style.display = 'none'
       defDiv.textContent = 'Definition for ' + paramW + ':'
 // THIS BUILDS THE THESAURUS SYNS SECTION AND ITS CONTENTS
+      const thesDivRegCont = document.createElement('div')
+      const thesDivRegContTwo = document.createElement('div')
+      thesDivRegCont.style.textAlign = 'center'
+      thesDivRegContTwo.style.textAlign = 'left'
+      thesDivRegContTwo.style.display = 'inline-block'
       const thesDivH = document.createElement('h3')
       const thesDiv = document.createElement('ul')
       thesDivH.style.display = 'none'
@@ -634,7 +655,9 @@ const getDef = async function(paramW, paramC){
 
       const mainDiv = document.querySelector('#breakP')
       mainDiv.appendChild(defDivH)
-      mainDiv.appendChild(defDiv)
+      mainDiv.appendChild(defDivRegCont)
+      defDivRegCont.appendChild(defDivRegContTwo)
+      defDivRegContTwo.appendChild(defDiv)
       for (var i = 0; i < finalDefwType.length; i++) {
         const innerDef = document.createElement('li')
         innerDef.textContent = finalDefwType[i]
@@ -645,7 +668,9 @@ const getDef = async function(paramW, paramC){
 
       const secMainDiv = document.querySelector('#breakQ')
       secMainDiv.appendChild(thesDivH)
-      secMainDiv.appendChild(thesDiv)
+      secMainDiv.appendChild(thesDivRegCont)
+      thesDivRegCont.appendChild(thesDivRegContTwo)
+      thesDivRegContTwo.appendChild(thesDiv)
       for (var q = 0; q < finalSyns.length; q++) {
         const innerThes = document.createElement('li')
         innerThes.textContent = finalSyns[q]
