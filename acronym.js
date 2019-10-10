@@ -703,7 +703,7 @@ const supplyValues = function(param){
     arrResDiv.textContent = mResult[i]
     contDiv.classList.add('row')
     blankLetDiv.classList.add('col-3')
-    letterDiv.classList.add('col-2')
+    letterDiv.classList.add('col-1')
     letterDiv.id = 'letDink' + '-' + [i]
     arrResDiv.classList.add('col-6')
     arrResDiv.id = 'arrDunk' + '-' + [i]
