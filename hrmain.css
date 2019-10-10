@@ -11,6 +11,12 @@
 #hrGen{
   text-align: center;
 }
+#mainContain{
+  text-align: center;
+}
+#contDiv{
+  text-align: center;
+}
 #mwLogo{
   text-align: center;
   box-sizing: border-box;
@@ -18,28 +24,21 @@
 #breakQ{
   text-align: left;
   display: inline-block;
-  vertical-align: top;
 }
 #breakP{
   text-align: left;
   display: inline-block;
-  vertical-align: top;
-}
-.col-1{
-  text-align: right;
-  font-size: 35px;
-  font-weight: bold;
-  padding-left: 40px;
-  margin-bottom: 5px;
-}
-.col-8{
-  padding-top: 20px;
-  text-align: left;
-  margin-left: 10px;
-  min-width: 200px;
 }
 [id^='letDink']{
   text-align: center;
+  font-size: 35px;
+  font-weight: bold:
+  margin-bottom: 15px;
+}
+[id^='arrDunk']{
+  text-align: left;
+  padding-top: 20px;
+  margin-left: 10px;
 }
 body{
   font-family: 'Righteous', cursive;

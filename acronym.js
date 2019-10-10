@@ -613,13 +613,19 @@ const getDef = async function(paramW, paramC){
       let defContent = ''
 // THIS BUILDS THE DEFINITION DIV AND ITS CONTENTS AND ALSO ASSIGNS THE LOGO DIV
       const mwLogoDiv = document.querySelector('#mwLogo')
+      const defDivH = document.createElement('h3')
       const defDiv = document.createElement('ul')
+      defDivH.style.display = 'none'
+      defDivH.textContent = 'DESTINATION CULTURE [DEFINED]'
       defDiv.id = 'defDiv'
       defDiv.classList.add = 'defList'
       defDiv.style.display = 'none'
       defDiv.textContent = 'Definition for ' + paramW + ':'
 // THIS BUILDS THE THESAURUS SYNS SECTION AND ITS CONTENTS
+      const thesDivH = document.createElement('h3')
       const thesDiv = document.createElement('ul')
+      thesDivH.style.display = 'none'
+      thesDivH.textContent = 'DISCOVER [CULTURE] ALTERNATIVES'
       thesDiv.id = 'thesDiv'
       thesDiv.classList.add = 'thesList'
       thesDiv.style.display = 'none'
@@ -627,6 +633,7 @@ const getDef = async function(paramW, paramC){
 // THIS WORKS ON THE DEFINITION ARRAY AND CREATES A NEW LIST ITEM FOR EVERY DEF THAT EXISTS
 
       const mainDiv = document.querySelector('#breakP')
+      mainDiv.appendChild(defDivH)
       mainDiv.appendChild(defDiv)
       for (var i = 0; i < finalDefwType.length; i++) {
         const innerDef = document.createElement('li')
@@ -637,6 +644,7 @@ const getDef = async function(paramW, paramC){
 // THIS WORKS THE THESAURUS ARRAY AND CREATES A NEW LIST ITEM FOR EVERY SYN THAT EXISTS
 
       const secMainDiv = document.querySelector('#breakQ')
+      secMainDiv.appendChild(thesDivH)
       secMainDiv.appendChild(thesDiv)
       for (var q = 0; q < finalSyns.length; q++) {
         const innerThes = document.createElement('li')
@@ -645,9 +653,11 @@ const getDef = async function(paramW, paramC){
         thesDiv.appendChild(innerThes)
       }
 // THIS FADES THE ELEMENTS IN NICELY - NOTE THE TIME PARAMS USED
-      $(defDiv).delay(paramC+1000).fadeIn('slow')
-      $(thesDiv).delay(paramC+500).fadeIn('slow')
-      $(mwLogoDiv).delay(paramC+1500).fadeIn('fast')
+      $(defDivH).css('opacity', 0).delay(paramC+800).fadeTo('slow', 1)
+      $(defDiv).css('opacity', 0).delay(paramC+1000).fadeTo('slow', 1)
+      $(thesDivH).css('opacity', 0).delay(paramC+1200).fadeTo('slow', 1)
+      $(thesDiv).css('opacity', 0).delay(paramC+1400).fadeTo('slow', 1)
+      $(mwLogoDiv).css('opacity', 0).delay(paramC+1600).fadeTo('fast', 1)
     }
 }
 
@@ -683,27 +693,31 @@ const supplyValues = function(param){
 
     const contDiv = document.createElement('div')
     const letterDiv = document.createElement('div')
+    const blankLetDiv = document.createElement('div')
     contDiv.id = "contDiv"
+    blankLetDiv.style.visibilty = 'hidden'
     letterDiv.style.display ='none'
     letterDiv.textContent = uiputSpl[i]
     const arrResDiv = document.createElement('div')
     arrResDiv.style.display = 'none'
     arrResDiv.textContent = mResult[i]
     contDiv.classList.add('row')
-    letterDiv.classList.add('col-1')
+    blankLetDiv.classList.add('col-3')
+    letterDiv.classList.add('col-2')
     letterDiv.id = 'letDink' + '-' + [i]
-    arrResDiv.classList.add('col-8')
+    arrResDiv.classList.add('col-6')
     arrResDiv.id = 'arrDunk' + '-' + [i]
     getEl.appendChild(contDiv)
+    contDiv.appendChild(blankLetDiv)
     contDiv.appendChild(letterDiv)
     contDiv.appendChild(arrResDiv)
   }
   for (var b = 0; b < uiputSpl.length; b++) {
-    $('#letDink-'+[b]).delay(timeOne).fadeIn('fast')
+    $('#letDink-'+[b]).css('opacity', '0').delay(timeOne).fadeTo('fast',1)
     timeOne += 1000
   }
   for (var c = 0; c < uiputSpl.length; c++) {
-    $('#arrDunk-'+[c]).delay(timeTwo).fadeIn('slow')
+    $('#arrDunk-'+[c]).css('opacity', '0').delay(timeTwo).fadeTo('slow',1)
     timeTwo += 1000
   }
   return timeTwo
