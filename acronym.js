@@ -592,7 +592,7 @@ const getDef = async function(paramW, paramC){
         }
       }
 // IF THE NEW ARRAY IS OF CERTAIN LENGTH ONLY GIVE UP TO 15 SUGGESTIONS - IF IT'S SMALLER THAN 15 - GIVE ALL THAT EXIST
-      if (synsArrSplit.length < 14) {
+      if (synsArrSplit.length < 16) {
           finalSyns = synsArrSplit
         } else {
         for (var s = 0; s < 16; s++) {
