@@ -8,36 +8,44 @@
   padding-top: 32px;
   padding-bottom: 32px;
 }
+
 #hrGen{
   text-align: center;
 }
-#mwLogo{
+/* #mwLogo{
   text-align: center;
   box-sizing: border-box;
-}
+} */
 #breakQ{
   text-align: left;
+  padding-bottom: 200px;
 }
 #breakP{
   text-align: left;
 }
-[id^='letDink']{
+#divFine{
   text-align: center;
+  position: absolute;
+  height: 200px;
+  bottom: 0;
+  padding-right: 15px;
+}
+[id^='letDink']{
+  margin-left: 50px;
   font-size: 35px;
   font-weight: bold:
   margin-bottom: 15px;
 }
 [id^='arrDunk']{
-  text-align: left;
-  padding-top: 20px;
-  margin-left: 10px;
+  padding-top: 17px;
+  margin-left: 100px;
 }
 body{
   font-family: 'Righteous', cursive;
   background-image: url("https://www.menaitech.com/wp-content/uploads/2016/02/top-4-reasons-to-invest-in-hr-system-in-saudi-arabia.jpg");
   background-position: left;
   background-size: cover;
-  min-height: 2000px;
+  min-height: 1500px;
   opacity: 0;
 }
 html{
@@ -52,8 +60,19 @@ ul{
 li{
   font-size: .75em;
 }
+h1{
+  text-align: center;
+  min-width: 35px;
+}
 h3{
   text-align: center;
+}
+h5{
+  text-align: center;
+}
+h6{
+  width: 300px;
+  padding-left: 10px;
 }
 #valueSub{
   margin-top: 15px;
@@ -71,4 +90,5 @@ h3{
   height: 120px;
   width: 120px;
 }
+
 
