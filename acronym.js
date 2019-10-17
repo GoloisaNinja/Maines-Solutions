@@ -11,6 +11,8 @@ const thanos = {
       'achieve',
       'asynchronous',
       'ability',
+      'advise aversion',
+      'about last night...',
       'adult conversations',
       'audit the truth',
       'ascending greatness mountain',
@@ -32,6 +34,8 @@ const thanos = {
       'belief is believing',
       'brilliance is brilliant',
       'be brilliant',
+      'better call saul',
+      'breaking bad was awesome',
       'brilliance breeds ideas',
 
   ],
@@ -75,8 +79,9 @@ const thanos = {
       'drive for driving',
       'drive to dedicated passion',
       'drive thru fear',
-      'dont dabble',
+      'don\'t dabble',
       'drive',
+      'drooling at meetings will be punished',
       'dedication',
       'delivering excellence',
       'delivering deliverables',
@@ -89,11 +94,14 @@ const thanos = {
       'energetic energy',
       'energy',
       'engage',
+      'enormous water dinosaurs',
       'engaging the real',
-      'ensare your customer',
-      'entrance your enemies',
+      'easy is good',
+      'empty pockets mean an empty heart',
       'enemy of my enemy',
-      'excitement',
+      'ever thought about eating a cloud?',
+      'exacting revenge',
+      'excitement is exciting',
       'exuberance',
       'extreme power',
       'extreme services',
@@ -103,18 +111,21 @@ const thanos = {
   f: [
       'finite resources',
       'future-ability',
-      'faces',
+      'face the face you fear',
       'faces make faces',
       'fear fears the fearful',
       'fear being filled with fear',
       'fearful optimism',
       'fake numbers',
+      'frappes are delightful',
       'fraudulent is felonious',
       'free snake friday',
       'free snack friday',
+      'fear leads to hate',
       'feel your feels',
+      'fuel your feels',
       'feels lead to feeling',
-      'friction only lead to slowdown',
+      'friction only leads to slowdown',
       'finger guns close sales',
       'freedom to freely be free'
   ],
@@ -131,6 +142,7 @@ const thanos = {
       'growing is knowing',
       'get after it',
       'granular greed',
+      'giggles are contagious',
       'gratification is gratifying',
       'greatness at the expense of good',
       'good is the enemy of great',
@@ -141,6 +153,7 @@ const thanos = {
   h: [
       'help others be helpful',
       'hardcore profits',
+      'hate leads to suffering',
       'healthy greed',
       'healthy health',
       'health is not wealth',
@@ -169,6 +182,7 @@ const thanos = {
       'in-fighting is not encouraged',
       'insignificance is not allowed',
       'imagine images',
+      'imagine dragons',
       'imagination can be imaginative'
   ],
 
@@ -553,14 +567,13 @@ const getDef = async function(paramW, paramC){
     defDivCont.style.textAlign = 'center'
     const defDivTwoCont = document.createElement('div')
     const defDivOops = document.createElement('h3')
-    defDivOops.textContent = 'OOPS...I DON\'T THINK THAT IS A WORD...'
+    defDivOops.textContent = 'OOPS...DIDN\'T FIND ' + paramW.toUpperCase() + ' IN THE DATABASES...MAYBE YOU MEANT...'
     defDivTwoCont.style.textAlign = 'left'
     defDivTwoCont.style.display = 'inline-block'
     const defDiv = document.createElement('ul')
     defDiv.id = 'defDiv'
     defDiv.classList.add = 'defList'
     defDiv.style.display = 'none'
-    defDiv.textContent = 'Couldn\'t locate ' + paramW + ' maybe you meant: '
     const mainDiv = document.querySelector('#breakP')
     mainDiv.appendChild(defDivCont)
     defDivCont.appendChild(defDivOops)
@@ -625,6 +638,7 @@ const getDef = async function(paramW, paramC){
 // THIS BUILDS THE DEFINITION DIV AND ITS CONTENTS AND ALSO ASSIGNS THE LOGO DIV
       const mwLogoDiv = document.querySelector('#mwLogo')
       const defDivH = document.createElement('h3')
+      const defDivI = document.createElement('h5')
       const defDiv = document.createElement('ul')
       const defDivRegCont = document.createElement('div')
       const defDivRegContTwo = document.createElement('div')
@@ -633,10 +647,11 @@ const getDef = async function(paramW, paramC){
       defDivRegContTwo.style.display = 'inline-block'
       defDivH.style.display = 'none'
       defDivH.textContent = 'DESTINATION CULTURE [DEFINED]'
+      defDivI.style.display = 'none'
+      defDivI.textContent = 'DEFINITIVELY [DEFINING THE MEANING] AND MISSION OF YOUR CORPORATE CULTURE'
       defDiv.id = 'defDiv'
       defDiv.classList.add = 'defList'
       defDiv.style.display = 'none'
-      defDiv.textContent = 'Definition for ' + paramW + ':'
 // THIS BUILDS THE THESAURUS SYNS SECTION AND ITS CONTENTS
       const thesDivRegCont = document.createElement('div')
       const thesDivRegContTwo = document.createElement('div')
@@ -644,17 +659,20 @@ const getDef = async function(paramW, paramC){
       thesDivRegContTwo.style.textAlign = 'left'
       thesDivRegContTwo.style.display = 'inline-block'
       const thesDivH = document.createElement('h3')
+      const thesDivI = document.createElement('h5')
       const thesDiv = document.createElement('ul')
       thesDivH.style.display = 'none'
       thesDivH.textContent = 'DISCOVER [CULTURE] ALTERNATIVES'
+      thesDivH.style.display = 'none'
+      thesDivI.textContent = 'ALTERNATIVELY [ALTERNATE YOUR CULTURE] TO SOMETHING SIMILAR...BUT POSSIBLY WAY BETTER'
       thesDiv.id = 'thesDiv'
       thesDiv.classList.add = 'thesList'
       thesDiv.style.display = 'none'
-      thesDiv.textContent = 'Similar to ' + paramW + ':'
 // THIS WORKS ON THE DEFINITION ARRAY AND CREATES A NEW LIST ITEM FOR EVERY DEF THAT EXISTS
 
       const mainDiv = document.querySelector('#breakP')
       mainDiv.appendChild(defDivH)
+      mainDiv.appendChild(defDivI)
       mainDiv.appendChild(defDivRegCont)
       defDivRegCont.appendChild(defDivRegContTwo)
       defDivRegContTwo.appendChild(defDiv)
@@ -668,6 +686,7 @@ const getDef = async function(paramW, paramC){
 
       const secMainDiv = document.querySelector('#breakQ')
       secMainDiv.appendChild(thesDivH)
+      secMainDiv.appendChild(thesDivI)
       secMainDiv.appendChild(thesDivRegCont)
       thesDivRegCont.appendChild(thesDivRegContTwo)
       thesDivRegContTwo.appendChild(thesDiv)
@@ -679,8 +698,10 @@ const getDef = async function(paramW, paramC){
       }
 // THIS FADES THE ELEMENTS IN NICELY - NOTE THE TIME PARAMS USED
       $(defDivH).css('opacity', 0).delay(paramC+800).fadeTo('slow', 1)
+      $(defDivI).css('opacity', 0).delay(paramC+800).fadeTo('slow', 1)
       $(defDiv).css('opacity', 0).delay(paramC+1000).fadeTo('slow', 1)
       $(thesDivH).css('opacity', 0).delay(paramC+1200).fadeTo('slow', 1)
+      $(thesDivI).css('opacity', 0).delay(paramC+1200).fadeTo('slow', 1)
       $(thesDiv).css('opacity', 0).delay(paramC+1400).fadeTo('slow', 1)
       $(mwLogoDiv).css('opacity', 0).delay(paramC+1600).fadeTo('fast', 1)
     }
@@ -712,38 +733,34 @@ const supplyValues = function(param){
   const mResult = getValue(param.trim())
   const uiputSpl = param.split('')
   const getEl = document.getElementById('mainContain')
-  let timeOne = 1000
-  let timeTwo = 1500
+  let timeOne = 1300
+  let timeTwo = 1800
   for (var i = 0; i < uiputSpl.length; i++) {
 
     const contDiv = document.createElement('div')
-    const letterDiv = document.createElement('div')
-    const blankLetDiv = document.createElement('div')
+    const letterDiv = document.createElement('h1')
     contDiv.id = "contDiv"
-    blankLetDiv.style.visibilty = 'hidden'
-    letterDiv.style.display ='none'
+    contDiv.style.justifyContent = 'center'
+    contDiv.style.alignItems = 'center'
+    contDiv.style.display = 'flex'
+    letterDiv.style.display ='inline-block'
     letterDiv.textContent = uiputSpl[i]
-    const arrResDiv = document.createElement('div')
-    arrResDiv.style.display = 'none'
+    const arrResDiv = document.createElement('h6')
+    arrResDiv.style.display = 'inline-block'
     arrResDiv.textContent = mResult[i]
-    contDiv.classList.add('row')
-    blankLetDiv.classList.add('col-3')
-    letterDiv.classList.add('col-1')
     letterDiv.id = 'letDink' + '-' + [i]
-    arrResDiv.classList.add('col-6')
     arrResDiv.id = 'arrDunk' + '-' + [i]
     getEl.appendChild(contDiv)
-    contDiv.appendChild(blankLetDiv)
     contDiv.appendChild(letterDiv)
     contDiv.appendChild(arrResDiv)
   }
   for (var b = 0; b < uiputSpl.length; b++) {
-    $('#letDink-'+[b]).css('opacity', '0').delay(timeOne).fadeTo('fast',1)
-    timeOne += 1000
+    $('#letDink-'+[b]).css('opacity', '0').delay(timeOne).fadeTo('slow',1)
+    timeOne += 1300
   }
   for (var c = 0; c < uiputSpl.length; c++) {
     $('#arrDunk-'+[c]).css('opacity', '0').delay(timeTwo).fadeTo('slow',1)
-    timeTwo += 1000
+    timeTwo += 1300
   }
   return timeTwo
   console.log(timeOne+timeTwo);
@@ -765,3 +782,4 @@ $('.navbar').css('background','#007efc');
 $('.navbar').css('background','transparent');
 }
 });
+
