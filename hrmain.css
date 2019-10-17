@@ -38,7 +38,7 @@
 }
 [id^='arrDunk']{
   padding-top: 17px;
-  margin-left: 40px;
+  margin-left: 100px;
 }
 body{
   font-family: 'Righteous', cursive;
@@ -90,5 +90,20 @@ h6{
   height: 120px;
   width: 120px;
 }
-
+#ablogo{
+  height: 300px;
+  width: 300px;
+}
+@media (max-width: 1024px) {
+  #vecDivTwo {
+   flex-direction: column;
+  }
+  #itemVec{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: block;
+    padding: 10px;
+  }
+}
 
