@@ -600,7 +600,9 @@ const getDef = async function(paramW, paramC){
         for (var w = 0; w < mysyns.length; w++) {
           let tempsyns = mysyns[w]
             for (var p = 0; p < tempsyns.length; p++) {
-              synsArrSplit.push(tempsyns[p])
+                if (!synsArrSplit.includes(tempsyns[p])) {
+                synsArrSplit.push(tempsyns[p])
+              }
             }
         }
       }
