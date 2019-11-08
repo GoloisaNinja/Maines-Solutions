@@ -363,10 +363,10 @@ const thanos = {
       'subject matter experts',
       'sever the bad',
       'sever tied ties',
-      'sever the unsevered',
+      'snakes are nope ropes',
       'severus snape',
-      'suppose better profits',
-      'suppose courage',
+      'suppose you stop whining',
+      'standing is erect sitting',
       'sequence the sequential',
       'standby for success',
       'sell the sellable things',
@@ -375,12 +375,15 @@ const thanos = {
       'sales first, profits first',
       'standardize amazingness',
       'supercalifragilisticexpialidocious',
-      'stand down for sucking',
-      'sweat less',
+      'sucking sucks',
+      'sweat less sweat and more blood',
       'sweet lawd',
       'swing for the fences',
       'secrets are fun',
-      'secrecy builds morale'
+      'secrecy builds morale',
+      'sweet kicks',
+      'sometimes lie to win',
+      'supply work place dogs'
   ],
 
   t: [
@@ -556,12 +559,15 @@ const getDef = async function(paramW, paramC){
   $('#mwLogo').hide()
   const response = await fetch("https://dictionaryapi.com/api/v3/references/thesaurus/json/" + paramW + "?key=5b5fb80f-b35f-4d88-a308-5435b2c0de50")
   const dictData = await response.json()
+  const responsedict = await fetch("https://dictionaryapi.com/api/v3/references/collegiate/json/" + paramW + "?key=80226290-e859-4258-822c-ea42a88ac9f5")
+  const dictDatadict = await responsedict.json()
   console.log(dictData);
+  console.log(dictDatadict);
 
 // CHECKING FOR SPECIFIC DATA - CANT JUST DO A 200/400 CHECK AS THERE IS ALWAYS A SUCCESSFUL RETURN EVEN IF THE WORD DOESN'T EXIST
 // IF DATA DOESN'T RETURN EXPECTED RESULT - FASHION A BASIC CANNED RESPONSE THAT IS SOMEWHAT DYNAMIC
 
-  if (dictData[0]['meta'] === undefined || dictData[0]['shortdef'] === undefined) {
+  if (dictDatadict[0]['meta'] === undefined || dictDatadict[0]['shortdef'] === undefined) {
     const mwLogoDiv = document.querySelector('#mwLogo')
     const defDivCont = document.createElement('div')
     defDivCont.style.textAlign = 'center'
@@ -594,18 +600,27 @@ const getDef = async function(paramW, paramC){
       let synsArr = []
       let synsArrSplit = []
       let finalSyns = []
+      if (dictData[0]['meta'] === undefined || dictData[0]['shortdef'] === undefined) {
+        for (var a = 0; a < dictData.length; a++) {
+          let mysyns = dictData[a]
+            if (!synsArrSplit.includes(mysyns)) {
+              synsArrSplit.push(mysyns)
+            }
+          }
+      } else {
       for (var v = 0; v < dictData.length; v++) {
         let mysyns = dictData[v]['meta']['syns']
         console.log(mysyns);
         for (var w = 0; w < mysyns.length; w++) {
           let tempsyns = mysyns[w]
             for (var p = 0; p < tempsyns.length; p++) {
-                if (!synsArrSplit.includes(tempsyns[p])) {
+              if (!synsArrSplit.includes(tempsyns[p])) {
                 synsArrSplit.push(tempsyns[p])
               }
             }
         }
       }
+    }
 // IF THE NEW ARRAY IS OF CERTAIN LENGTH ONLY GIVE UP TO 15 SUGGESTIONS - IF IT'S SMALLER THAN 15 - GIVE ALL THAT EXIST
       if (synsArrSplit.length < 16) {
           finalSyns = synsArrSplit
@@ -625,13 +640,13 @@ const getDef = async function(paramW, paramC){
       console.log(synsArrSplit);
       console.log(finalSyns);
       console.log(dictData[0]['fl']);
-      const def = dictData[0]['shortdef']
+      const def = dictDatadict[0]['shortdef']
 // THIS GETS ALL TYPES OF DEFS FROM API OBJECT ARRAY - FOR INSTANCE NOUN DEFS ADJ DEFS AND VERB DEFS IF THEY EXIST
       const finalDefwType = []
-      for (var c = 0; c < dictData.length; c++) {
-        let typeW = dictData[c]['fl'] + ': '
-        for (var d = 0; d < dictData[c]['shortdef'].length; d++) {
-          let comboW = typeW + dictData[c]['shortdef'][d]
+      for (var c = 0; c < dictDatadict.length; c++) {
+        let typeW = dictDatadict[c]['fl'] + ': '
+        for (var d = 0; d < dictDatadict[c]['shortdef'].length; d++) {
+          let comboW = typeW + dictDatadict[c]['shortdef'][d]
           finalDefwType.push(comboW)
         }
       }
